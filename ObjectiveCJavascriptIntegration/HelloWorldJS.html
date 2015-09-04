@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			// Function to connect with the bridge in the side of iOS.
+			function connectWebViewJavascriptBridge(callback) {
+				if (window.WebViewJavascriptBridge) {
+					callback(WebViewJavascriptBridge)
+				} else {
+					document.addEventListener('WebViewJavascriptBridgeReady', function() {
+						callback(WebViewJavascriptBridge)
+					}, false)
+				}
+			}
+        
+        	connectWebViewJavascriptBridge(function(bridge) {
+                                       
+                bridge.init(function(message, responseCallback) {
+                	// iOS bridge could have sent a message when web view was not initialized.
+                    if (responseCallback) {
+                    	var logData = {'message':'JS says: iOS initial message recieved correctly: ' + message}
+                    	bridge.callHandler('JSLogTextHandler', logData, function(response) {
+
+                    	})
+
+                       	responseCallback("JS says: iOS initial message recieved correctly: " + message);
+           			}
+                })
+
+                // Send to iOS data to log actions.
+                var logData = {'message':'JS says: Hello World', 'date' : (new Date()).getTime()}
+                bridge.callHandler('JSLogTextHandler', logData, function(response) {
+
+                })
+
+				// Call iOS Bridge "JSSaysHelloWorld" handler method.
+				bridge.callHandler('JSSaysHelloWorld', 'JS says: Hello World', function(response) {
+					// iOS bridge could send a confirmation response.
+				})
+                                           
+                bridge.registerHandler('ObjectiveCSaysHello', function(data, responseCallback) {
+                	// Send to iOS data to log actions.
+                	var logData = {'message':'JS says: Hello from Objective C recieved', 'date' : (new Date()).getTime()}
+                	bridge.callHandler('JSLogTextHandler', logData, function(response) {
+                	})
+
+					responseCallback(data)
+				})
+			})
+		</script>
+	</body>
+</html>
