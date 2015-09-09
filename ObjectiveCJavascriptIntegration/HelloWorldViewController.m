@@ -93,6 +93,11 @@ static NSString *const kHelloWorldHTMLFileNameType          = @"html";
     [self logText:@"Objective C says: Finish loading HTML page." timeStamp:[[NSDate date] timeIntervalSince1970]];
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self logText:[error localizedDescription] timeStamp:[[NSDate date] timeIntervalSince1970]];
+}
+
 #pragma mark - Initialization methods.
 - (void)resetTextViewsTexts
 {
