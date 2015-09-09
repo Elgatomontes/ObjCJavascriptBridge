@@ -85,7 +85,6 @@ static NSString *const kHelloWorldHTMLFileNameType          = @"html";
     
     [self logText:@"Objective C says: Loading HTML page." timeStamp:[[NSDate date] timeIntervalSince1970]];
     [self.webView loadHTMLString:appHtml baseURL:baseURL];
-    //    self.webView.delegate = self;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
