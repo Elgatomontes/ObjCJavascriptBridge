@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ObjectiveCJavascriptIntegration.xcscheme</key>
+		<key>Debug.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,6 +12,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8446749F1BA1D75E002E27CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>84B2B2971B978EB200564B70</key>
 		<dict>
 			<key>primary</key>
