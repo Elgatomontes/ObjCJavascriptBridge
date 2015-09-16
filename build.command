@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # Declare vars.
 workspacename="ObjectiveCJavascriptIntegration" # The name of the workspace
-scheme=$workspacename # The workspace scheme.
+scheme="Release" # The workspace scheme.
 workspace_dir=$(dirname $0) # The direction of the workspace folder (The current direction).
 build_location=$workspace_dir/build # The direction of the folder to save the build.
-workspace_configuration="Debug" # The configuration to compile in "debug" mode o "release" mode.
+workspace_configuration="Release" # The configuration to compile in "debug" mode o "release" mode.
 onlyactivarch="NO" # Compile only to the current valid architecture?.
 
 # Change to workspace folder.
@@ -31,7 +31,7 @@ if [[ $workspace_configuration == "Debug" ]]; then
 fi
 
 # Generate .ipa file.
-xcrun -sdk iphoneos PackageApplication -v "$build_location/$workspace_configuration-iphoneos/$workspacename.app" -o "$workspace_dir/$workspacename.ipa"
+xcrun --sdk iphoneos PackageApplication -v "$build_location/$workspace_configuration-iphoneos/$workspacename.app" -o "$workspace_dir/$workspacename.ipa"
 
 # Check if .ipa generation succeeded.
 if [ $? != 0 ]
