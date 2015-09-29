@@ -24,8 +24,9 @@ then
 fi
 echo "El WorkSpace se compiló correctamente.\n"
 
+# No .ipa file needed.
 if [[ $workspace_configuration == "Debug" ]]; then
-	echo "NO HAY QUE GENERAR UN .IPA\n"
+	echo "No se necesita generar un archivo .ipa.\n"
 	rm -r build/
 	exit 0
 fi
